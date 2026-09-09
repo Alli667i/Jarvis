@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JARVIS</title>
+<style>
+  /*
+    Colors, fonts, and layout here match architecture.md's "Frontend
+    design system" section exactly -- that section is the source of
+    truth if this ever needs to be rebuilt, not this file.
+  */
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d0f0d;
+    color: #ffb000;
+    font-family: "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .console {
+    width: 420px;
+    max-width: 100%;
+    border: 1px solid #3a2e14;
+    border-radius: 4px;
+    padding: 32px 28px;
+    background: #101210;
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #7a5c1f;
+    margin-bottom: 40px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffb000;
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  /* Turns red if the mic/server connection has a known problem --
+     toggled from app.js, not decorative. */
+  .dot.error {
+    background: #d84a30;
+  }
+
+  .trace {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    margin-bottom: 24px;
+  }
+
+  .bar {
+    width: 4px;
+    background: #ffb000;
+    border-radius: 1px;
+  }
+
+  .status-label {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #ffb000;
+    margin-bottom: 20px;
+  }
+
+  .caption {
+    min-height: 44px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #c99b3f;
+    padding: 0 10px;
+    margin-bottom: 32px;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: center;
+  }
+
+  .mic-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid #ffb000;
+    background: transparent;
+    color: #ffb000;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .mic-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  /* Widgets aren't built yet (see architecture.md) -- this empty area
+     is reserved so adding them later doesn't require restructuring the
+     page. */
+  #widget-area {
+    width: 420px;
+    max-width: 100%;
+    margin-top: 16px;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="console">
+    <div class="topbar">
+      <span><span class="dot" id="connection-dot"></span>JARVIS</span>
+      <span id="state-code">STANDBY</span>
+    </div>
+
+    <div class="trace" id="trace"></div>
+
+    <div class="status-label" id="status-label">STANDBY</div>
+    <div class="caption" id="caption"></div>
+
+    <div class="controls">
+      <button class="mic-btn" id="mic-button" aria-label="Start listening">&#9679;</button>
+    </div>
+  </div>
+
+  <div id="widget-area"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
