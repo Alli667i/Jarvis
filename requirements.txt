@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+python-multipart
+httpx
+openai
+edge-tts
+fish-audio-sdk
+aiofiles
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
