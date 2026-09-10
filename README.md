@@ -4,7 +4,6 @@ A voice-controlled personal assistant for Google Calendar and Google Tasks — b
 
 Runs as a small FastAPI server with a browser-based voice console. Talk to it, and it manages your calendar and to-do list — proposing changes, asking for confirmation, and proactively reminding you about what's coming up, all without you needing to ask.
 
-![JARVIS console](docs/images/console.png)
 
 ---
 
@@ -25,7 +24,6 @@ Every place in this codebase where the model's behavior actually matters, there'
 
 The result: the AI can be exactly as unpredictable as it's going to be on any given day, without that unpredictability ever reaching the person using it.
 
-**For the deeper technical breakdown — exactly how the confirmation mechanism works, the build methodology, and real bugs caught during development — see [`DESIGN.md`](DESIGN.md).**
 
 ---
 
