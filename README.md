@@ -4,6 +4,8 @@ A voice-controlled personal assistant for Google Calendar and Google Tasks — b
 
 Runs as a small FastAPI server with a browser-based voice console. Talk to it, and it manages your calendar and to-do list — proposing changes, asking for confirmation, and proactively reminding you about what's coming up, all without you needing to ask.
 
+![JARVIS console](docs/images/console.png)
+
 ---
 
 ## Why this exists — the design philosophy
@@ -23,6 +25,8 @@ Every place in this codebase where the model's behavior actually matters, there'
 
 The result: the AI can be exactly as unpredictable as it's going to be on any given day, without that unpredictability ever reaching the person using it.
 
+**For the deeper technical breakdown — exactly how the confirmation mechanism works, the build methodology, and real bugs caught during development — see [`DESIGN.md`](DESIGN.md).**
+
 ---
 
 ## Features
@@ -34,6 +38,20 @@ The result: the AI can be exactly as unpredictable as it's going to be on any gi
 - Automatic text-to-speech fallback (a second engine takes over transparently if the primary one fails)
 - A small, distinctive browser console UI with a real audio-reactive waveform, not a canned animation
 - Designed to run on genuinely modest hardware — developed and deployed on a repurposed Android phone running Termux, not a cloud VM
+
+---
+
+## Screenshots
+
+The console has four distinct states, each visually and texturally different — not just recolored, since each represents something different actually happening (a real audio-reactive waveform for listening/speaking, a synthetic searching pattern while the LLM is thinking):
+
+| Standby | Listening |
+|---|---|
+| ![Standby state](docs/images/standby.png) | ![Listening state](docs/images/listening.png) |
+
+| Processing | Speaking |
+|---|---|
+| ![Processing state](docs/images/processing.png) | ![Speaking state](docs/images/speaking.png) |
 
 ---
 
@@ -132,4 +150,5 @@ This was built and is actively used on a Samsung A40 running Termux — a five-y
 
 ## Status
 
-Actively developed. The core voice + calendar/task loop is complete and in daily use. Planned next: a second input device, richer visual widgets for calendar/task data, and wake-word/hands-free interaction.
+Actively developed. The core voice + calendar/task loop is complete and in daily use.
+
